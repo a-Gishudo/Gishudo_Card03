@@ -14,7 +14,7 @@ body {
     padding: 10px;
 }
 
-/* プロフィールカード全体（スマホ画面に収まるよう自動縮小） */
+/* プロフィールカード全体 */
 .profile-card {
     width: 100%;
     max-width: 650px;
@@ -43,7 +43,7 @@ body {
     gap: 12px;
 }
 
-/* 上部セクション（スマホでも常に横並び3分割を維持） */
+/* 上部セクション */
 .top-section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -102,36 +102,27 @@ body {
     display: block;
 }
 
-/* 右：メッセージ枠（2カラム分） */
+/* 右：メッセージ枠 */
 .message-item {
     grid-column: span 2;
-    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
 }
 
 .message-inner {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
     flex: 1;
     width: 100%;
+    padding: 8px 0;
 }
 
-.message-item .item-content {
-    flex: 1;
-}
-
-/* 下部グリッド（スマホでも常に横並び3分割を維持） */
+/* 下部グリッド */
 .profile-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
-}
-
-.profile-grid .grid-item {
-    text-align: center;
-    justify-content: center;
-    min-height: 90px;
 }
 
 /* 枠線の共通スタイル */
@@ -142,6 +133,7 @@ body {
     background-color: #fff;
     display: flex;
     flex-direction: column;
+    justify-content: center; /* 枠内を上下中央揃え */
 }
 
 /* 各項目のタイトル */
@@ -156,7 +148,7 @@ body {
     text-align: center;
 }
 
-/* 本文：1行なら中央配置、複数行で改行される場合は左揃えに自動調整 */
+/* 本文：1行なら中央、改行（複数行）なら左揃え（上下も中央配置） */
 .item-content {
     font-size: 0.82rem;
     font-weight: bold;
@@ -165,8 +157,6 @@ body {
     word-break: break-word;
     width: fit-content;
     max-width: 100%;
-    margin: 0 auto;
+    margin: auto; /* 上下左右の中央寄せ */
     text-align: left;
-    display: flex;
-    align-items: center;
 }
