@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>AR名刺 - カメラ起動</title>
+  
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/3.3.1/aframe/build/aframe-ar.js"></script>
+  <!-- 常に正面を向かせるための look-at コンポーネント -->
+  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+
+  <style>
+    /* 指定された丸文字系フォントを適用 */
+    body { 
+      margin: 0; 
+      overflow: hidden; 
+      font-family: "Hiragino Maru Gothic ProN", "UD Digital Kyokasho NK-R", "HG丸ｺﾞｼｯｸM-PRO", sans-serif; 
+    }
+
+    /* 雲ボタンの共通設定 */
+    .ar-btn {
+      position: fixed;
+      /* 【修正】被りを防ぐため、位置をさらに下げました（60% → 75%） */
+      top: 75%; 
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      width: 140px;
+      height: 55px;
+      padding: 5px;
+      text-align: center;
+      text-decoration: none;
+      color: #333333; 
+      font-weight: bold;
+      font-size: 13px;
+      line-height: 1.3;
+      
+      /* スッキリした雲のデザイン */
+      border-radius: 90px 70px 80px 60px / 40px 40px 30px 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      z-index: 9999;
+    }
+
+    /* HP（くすみパステルブルー） */
+    .btn-hp {
+      left: 25px;
+      background-color: #A2D2FF;
+    }
+
+    /* プロフィール（くすみパステルイエロー） */
+    .btn-profile {
+      right: 25px;
+      background-color: #FEF08A;
+      border-radius: 70px 90px 60px 80px / 40px 40px 30px 30px;
+    }
+  </style>
+</head>
+
+<body style="margin: 0; overflow: hidden;">
+
+  <!-- ボタン（別タブ設定） -->
+  <a href="https://sites.google.com/ict.adachi.ed.jp/adaimi-j/" target="_blank" rel="noopener noreferrer" class="ar-btn btn-hp">中学校HP</a>
+  <a href="https://a-gishudo.github.io/Gishudo_Card03/AR_Profile03/" target="_blank" rel="noopener noreferrer" class="ar-btn btn-profile">プロフィール</a>
+
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+    
+    <a-marker 
+  type="pattern" 
+  url="pattern-Gichan.patt"[cite: 1]
+  smooth="true" 
+  smoothCount="15" 
+  smoothTolerance="0.05" 
+  smoothThreshold="5">
+      
+  <!-- 常にカメラを向く設定（look-at）のキャラクター画像 -->
+  <a-image src="Gichan_AR_01.png" position="0 1.5 0" width="2.0" height="3.0" look-at="[camera]"></a-image>
+
+</a-marker>
+
+    <!-- カメラ設定 -->
+    <a-entity camera></a-entity>
+  </scene>
+</body>
+</html>
