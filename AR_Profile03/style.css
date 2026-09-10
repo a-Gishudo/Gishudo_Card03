@@ -86,6 +86,7 @@ body {
 
 .value {
     color: #333;
+    font-weight: bold; /* 太字を追加 */
 }
 
 /* 左下の技ちゃん画像 */
